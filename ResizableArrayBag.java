@@ -229,15 +229,68 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       T[] firstbag = this.toArray();
       T[] secondbag = bag2.toArray();
 
-      for (int i=0;i<numberOfEntries;i++){
+      for (int i = 0; i < numberOfEntries; i++){
          combined.add(firstbag[i]);
       }
 
-      for (int i=0;i<bag2.getCurrentSize();i++){
+      for (int i = 0; i < bag2.getCurrentSize(); i++){
          combined.add(secondbag[i]);
       }
 
       return combined;
+   }
+   public BagInterface<T> intersection(BagInterface<T> bag2){
+      BagInterface<T> compare = new ResizableArrayBag<T>();
+      BagInterface<T> combined = new ResizableArrayBag<T>();
+      T[] firstbag = this.toArray();
+      T[] secondbag = bag2.toArray();
+
+      for(int i = 0; i < numberOfEntries; i++){
+         compare.add(firstbag[i]);
+      }
+
+      for(int i = 0; i < bag2.getCurrentSize(); i++){
+        if(compare.contains(secondbag[i])){
+            combined.add(secondbag[i]);
+        }
+      }
+      return combined;
+   }
+/*
+   public BagInterface<T> difference2(BagInterface<T> bag2){
+      BagInterface<T> diff = new ResizableArrayBag<T>();
+      T[] firstbag = this.toArray();
+      //T[] secondbag = bag2.toArray();
+
+      for (int i = 0; i < numberOfEntries; i++){
+         if (this.getFrequencyOf(firstbag[i]) > bag2.getFrequencyOf(firstbag[i])){
+            for(int j = 0; j < (this.getFrequencyOf(firstbag[i]) - bag2.getFrequencyOf(firstbag[i])); j++){
+               diff.add(firstbag[i]);
+            }
+         }
+      }
+
+      return diff;
+   }
+   */
+
+
+   public BagInterface<T> difference(BagInterface<T> bag2){
+      BagInterface<T> compare = new ResizableArrayBag<T>();
+      T[] firstbag = this.toArray();
+      T[] secondbag = bag2.toArray();
+
+      for(int i = 0; i < numberOfEntries; i++){
+          compare.add(firstbag[i]);
+      }
+      
+      for(int i = 0; i < bag2.getCurrentSize(); i++){
+          if(compare.contains(secondbag[i])){
+              compare.remove(secondbag[i]);
+          }
+      }
+
+      return compare;
    }
 } // end ResizableArrayBag
 
@@ -251,7 +304,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
  A D B A C A D
  Testing isEmpty with a bag that is not empty:
  isEmpty finds the bag not empty: OK.
- 
+
  
  Testing the method getFrequencyOf:
  In this bag, the count of A is 3
