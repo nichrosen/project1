@@ -9,7 +9,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
 {
 	private T[] bag; // Cannot be final due to doubling
 	private int numberOfEntries;
-   private boolean integrityOK = false;
+    private boolean integrityOK = false;
 	private static final int DEFAULT_CAPACITY = 25; // Initial capacity of bag
 	private static final int MAX_CAPACITY = 10000;
 
@@ -222,6 +222,22 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       if (!integrityOK)
          throw new SecurityException ("ArrayBag object is corrupt.");
    } // end checkintegrity
+
+   public BagInterface<T> union(BagInterface<T> bag2){
+      BagInterface<T> combined = new ResizableArrayBag<T>();
+      T[] firstbag = this.toArray();
+      T[] secondbag = bag2.toArray();
+
+      for (int i=0;i<numberOfEntries;i++){
+         combined.add(firstbag[i]);
+      }
+
+      for (int i=0;i<bag2.getCurrentSize();i++){
+         combined.add(secondbag[i]);
+      }
+
+      return combined;
+   }
 } // end ResizableArrayBag
 
 /*
