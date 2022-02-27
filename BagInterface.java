@@ -49,7 +49,7 @@ public interface BagInterface<T>
 
 	public BagInterface<T> union(BagInterface<T> bag2);
 
-	public BagInterface<T> intersection(BagInterface<T> bag2);
+	//public BagInterface<T> intersection(BagInterface<T> bag2);
 
-	public BagInterface<T> difference(BagInterface<T> bag2);
+	//public BagInterface<T> difference(BagInterface<T> bag2);
 } // end BagInterface

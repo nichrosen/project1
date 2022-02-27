@@ -224,6 +224,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    } // end checkintegrity
 
    public BagInterface<T> union(BagInterface<T> bag2){
+      checkintegrity();
       BagInterface<T> combined = new ResizableArrayBag<T>();
       T[] firstbag = this.toArray();
       T[] secondbag = bag2.toArray();

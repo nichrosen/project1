@@ -5,7 +5,7 @@
     @author Frank M. Carrano, Timothy M. Henry
     @version 5.0
 */
-public class LinkedBag<T> implements BagInterface<T>
+/*public class LinkedBag<T> implements BagInterface<T>
 {
 	private Node firstNode;       // reference to first node
 	private int numberOfEntries;
@@ -35,3 +35,4 @@ public class LinkedBag<T> implements BagInterface<T>
 		} // end constructor
 	} // end Node
 } // end LinkedBag
+*/
