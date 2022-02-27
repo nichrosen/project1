@@ -240,6 +240,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
       return combined;
    }
    public BagInterface<T> intersection(BagInterface<T> bag2){
+      checkintegrity();
       BagInterface<T> compare = new ResizableArrayBag<T>();
       BagInterface<T> combined = new ResizableArrayBag<T>();
       T[] firstbag = this.toArray();
@@ -276,6 +277,7 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
 
 
    public BagInterface<T> difference(BagInterface<T> bag2){
+      checkintegrity();
       BagInterface<T> compare = new ResizableArrayBag<T>();
       T[] firstbag = this.toArray();
       T[] secondbag = bag2.toArray();
