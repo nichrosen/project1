@@ -6,7 +6,7 @@ public class BagDriver{
 
         //for testing union, intersection, difference methods on ResizableArrayBag class
 
-        BagInterface<String> bag_1 = new ResizableArrayBag<>();
+        BagInterface<String> bag_1 = new LinkedBag<>();
         BagInterface<String> bag_2 = new ResizableArrayBag<>();
 
         bag_1.add("A");
