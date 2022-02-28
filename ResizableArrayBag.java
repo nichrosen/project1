@@ -223,6 +223,9 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
          throw new SecurityException ("ArrayBag object is corrupt.");
    } // end checkintegrity
 
+   /** Combines the contents of two bags into another bag.
+       @param bag2  Second bag.
+       @return  combined bag of contents from both bags. */
    public BagInterface<T> union(BagInterface<T> bag2){
       checkintegrity();
       BagInterface<T> combined = new ResizableArrayBag<T>();
@@ -231,14 +234,18 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
 
       for (int i = 0; i < numberOfEntries; i++){
          combined.add(firstbag[i]);
-      }
+      } // end for
 
       for (int i = 0; i < bag2.getCurrentSize(); i++){
          combined.add(secondbag[i]);
-      }
+      } // end for
 
       return combined;
-   }
+   } // end union
+
+   /** Combines like contents of two bags into another bag.
+       @param bag2  Second bag.
+       @return  combined bag of like contents. */
    public BagInterface<T> intersection(BagInterface<T> bag2){
       checkintegrity();
       BagInterface<T> compare = new ResizableArrayBag<T>();
@@ -248,16 +255,21 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
 
       for(int i = 0; i < numberOfEntries; i++){
          compare.add(firstbag[i]);
-      }
+      } // end for
 
       for(int i = 0; i < bag2.getCurrentSize(); i++){
         if(compare.contains(secondbag[i])){
             combined.add(secondbag[i]);
-        }
-      }
+        } // end if
+      } // end for
       return combined;
-   }
+   } // end intersection 
+
+
+
 /*
+   Trying to come up with different ways to iterate difference:
+
    public BagInterface<T> difference2(BagInterface<T> bag2){
       BagInterface<T> diff = new ResizableArrayBag<T>();
       T[] firstbag = this.toArray();
@@ -275,7 +287,9 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
    }
    */
 
-
+/** Creates a collection of entries that would be left in one collection, .
+       @param anEntry  The entry to be removed.
+       @return  True if the removal was successful, or false if not. */
    public BagInterface<T> difference(BagInterface<T> bag2){
       checkintegrity();
       BagInterface<T> compare = new ResizableArrayBag<T>();
@@ -284,16 +298,17 @@ public final class ResizableArrayBag<T> implements BagInterface<T>
 
       for(int i = 0; i < numberOfEntries; i++){
           compare.add(firstbag[i]);
-      }
+      } // end for
       
       for(int i = 0; i < bag2.getCurrentSize(); i++){
           if(compare.contains(secondbag[i])){
               compare.remove(secondbag[i]);
-          }
-      }
+          } // end if
+      } // end for
 
       return compare;
-   }
+   } // end difference
+
 } // end ResizableArrayBag
 
 /*
