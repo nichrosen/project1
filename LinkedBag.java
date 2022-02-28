@@ -1,4 +1,3 @@
-
 /** OUTLINE
     A class of bags whose entries are stored in a chain of linked nodes.
     The bag is never full.
