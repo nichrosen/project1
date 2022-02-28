@@ -47,10 +47,20 @@ public interface BagInterface<T>
                 Note: If the bag is empty, the returned array is empty. */
 	public T[] toArray();
 
+	/** Combines contents of two bags into another bag.
+		 @param bag2  Second bag.
+		 @return  combined, Combined bag of contenets from both bags. */
 	public BagInterface<T> union(BagInterface<T> bag2);
 
+   /** Combines only like contents of two bags into another bag.
+       @param bag2  Second bag.
+       @return  combined, combined bag of like contents. */
 	public BagInterface<T> intersection(BagInterface<T> bag2);
 
+	/** Creates a collection of entries that would be left in one collection, after removing
+ *  those that also occur in the second.
+       @param bag2  Second bag.
+       @return compare, new collection of entries after second bag contents are removed from first bag. */
 	public BagInterface<T> difference(BagInterface<T> bag2);
 
 	//public BagInterface<T> difference2(BagInterface<T> bag2);

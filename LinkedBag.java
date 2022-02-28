@@ -16,6 +16,10 @@ public class LinkedBag<T> implements BagInterface<T>
       numberOfEntries = 0;
 	} // end default constructor
 
+	
+	/** 
+	 * @return int
+	 */
 	public int getCurrentSize(){
 		return numberOfEntries;
 	}
@@ -135,8 +139,8 @@ public class LinkedBag<T> implements BagInterface<T>
 	}
 
 	/** Combines contents of two bags into another bag.
-		 @param bag2  .
-		 @return  True if the bag contains anEntry, or false if not. */
+		 @param bag2  Second bag.
+		 @return  combined, Combined bag of contenets from both bags. */
 	public BagInterface<T> union(BagInterface<T> bag2){
 		BagInterface<T> combined = new LinkedBag<T>();
 		T[] firstbag = this.toArray();
@@ -153,6 +157,9 @@ public class LinkedBag<T> implements BagInterface<T>
 		return combined;
 	}
 
+   /** Combines only like contents of two bags into another bag.
+       @param bag2  Second bag.
+       @return  combined, combined bag of like contents. */
 	public BagInterface<T> intersection(BagInterface<T> bag2){
 		BagInterface<T> compare = new LinkedBag<T>();
 		BagInterface<T> combined = new LinkedBag<T>();
@@ -171,6 +178,10 @@ public class LinkedBag<T> implements BagInterface<T>
       return combined;
 	}
 
+/** Creates a collection of entries that would be left in one collection, after removing
+ *  those that also occur in the second.
+       @param bag2  Second bag.
+       @return compare, new collection of entries after second bag contents are removed from first bag. */
 	public BagInterface<T> difference(BagInterface<T> bag2){
 		BagInterface<T> compare = new LinkedBag<T>();
 		T[] firstbag = this.toArray();
